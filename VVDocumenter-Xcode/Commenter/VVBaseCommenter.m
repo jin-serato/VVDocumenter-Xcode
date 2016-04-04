@@ -178,7 +178,8 @@
     if (!self.hasThrows) {
         return @"";
     } else {
-        return [NSString stringWithFormat:@"%@%@%@ <#throws value description#>\n", self.emptyLine, self.prefixString, [self throwsSymbol]];
+		NSString *indentString = [[VVDocumenterSetting defaultSetting] useSpaces] ? @" " : @"\t";
+		return [NSString stringWithFormat:@"%@%@%@\n%@%@ <#throws value description#>\n", self.emptyLine, self.prefixString, [self throwsSymbol], self.prefixString, indentString];
     }
 }
 
