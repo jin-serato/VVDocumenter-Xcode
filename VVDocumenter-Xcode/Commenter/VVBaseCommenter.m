@@ -101,9 +101,8 @@
 
 -(NSString *) startComment
 {
-    NSString *descriptionTag =
-    [[VVDocumenterSetting defaultSetting] briefDescription] && !self.forSwift ? @"@brief " : @"";
-    return [self startCommentWithDescriptionTag:descriptionTag];
+	NSString *descriptionTag = [[VVDocumenterSetting defaultSetting] briefDescription] && !self.forSwift ? @"@brief " : @"";
+    return [NSString stringWithFormat:@"%@\n%@", [self prefixString], [self startCommentWithDescriptionTag:descriptionTag]];
 }
 
 -(NSString *) argumentsComment
@@ -228,7 +227,7 @@
 -(NSString *) endComment
 {
     if ([[VVDocumenterSetting defaultSetting] prefixWithSlashes]) {
-        return @"";
+        return self.emptyLine;
     } else {
         return [NSString stringWithFormat:@"%@ */",self.indent];
     }
