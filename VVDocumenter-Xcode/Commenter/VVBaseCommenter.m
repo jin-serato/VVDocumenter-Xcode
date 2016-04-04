@@ -164,7 +164,8 @@
 -(NSString *) returnComment
 {
     if (!self.hasReturn) {
-        return @"";
+		NSString *indentString = [[VVDocumenterSetting defaultSetting] useSpaces] ? @" " : @"\t";
+		return [NSString stringWithFormat:@"%@%@%@\n%@%@ Nothing.\n", self.emptyLine, self.prefixString, [self returnSymbol], self.prefixString, indentString];
     } else {
 		NSString *indentString = [[VVDocumenterSetting defaultSetting] useSpaces] ? @" " : @"\t";
         return [NSString stringWithFormat:@"%@%@%@\n%@%@ <#return value description#>\n", self.emptyLine, self.prefixString, [self returnSymbol], self.prefixString, indentString];
