@@ -154,7 +154,8 @@
         if (self.forSwiftEnum) {
             [result appendFormat:@"%@- %@%@<#%@ description#>\n", self.prefixString, name, indentString, arg.name];
         } else {
-            [result appendFormat:@"%@%@ %@%@<#%@ description#>\n", self.prefixString, [self paramSymbol], name, indentString, arg.name];
+            [result appendFormat:@"%@%@%@ %@\n", self.emptyLine, self.prefixString, [self paramSymbol], name];
+			[result appendFormat:@"%@%@ <#%@ description#>\n", self.prefixString, indentString, arg.name];
         }
 
     }
