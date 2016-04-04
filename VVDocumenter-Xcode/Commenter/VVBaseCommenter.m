@@ -102,7 +102,7 @@
 -(NSString *) startComment
 {
 	NSString *descriptionTag = [[VVDocumenterSetting defaultSetting] briefDescription] && !self.forSwift ? @"@brief " : @"";
-    return [NSString stringWithFormat:@"%@\n%@", [self prefixString], [self startCommentWithDescriptionTag:descriptionTag]];
+    return [NSString stringWithFormat:@"%@%@", self.emptyLine, [self startCommentWithDescriptionTag:descriptionTag]];
 }
 
 -(NSString *) argumentsComment
@@ -111,7 +111,7 @@
         return @"";
 
     // start off with an empty line
-    NSMutableString *result = [NSMutableString stringWithFormat:@"%@", self.emptyLine];
+    NSMutableString *result = [NSMutableString string];
 
     int longestNameLength = [[self.arguments valueForKeyPath:@"@max.name.length"] intValue];
     BOOL useSpace = [[VVDocumenterSetting defaultSetting] useSpaces];
